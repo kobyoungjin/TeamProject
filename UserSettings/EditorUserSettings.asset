@@ -6,6 +6,7 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedScenePath-0:
+<<<<<<< HEAD
       value: 22424703114646780c1c182d1f2d1f24131a0826296804252425193aece77413ebf379dae43f31392a4dca2405331133f74a3a08f3050f4b4540e80018eb09
       flags: 0
     RecentlyUsedScenePath-1:
@@ -22,6 +23,15 @@ EditorUserSettings:
       flags: 0
     RecentlyUsedScenePath-5:
       value: 22424703114646780c1c182d1f2d1f24131a0826296804252425193aece77413ebf379dae43f31392a4dca2405331133f74a3a08f3050f450400f41a08
+=======
+      value: 22424703114646680e0b0227036c6c111b07142f1f2b233e2867083debf42d
+      flags: 0
+    RecentlyUsedScenePath-1:
+      value: 22424703114646680e0b0227036c6b150503563f22213229
+      flags: 0
+    RecentlyUsedScenePath-2:
+      value: 22424703114646680e0b0227036c6b1505032b292926237e38271427fb
+>>>>>>> parent of b3c54bb (회전 장애물)
       flags: 0
     RecentlyUsedScenePath-6:
       value: 224247031146467f18000b271f2d6b0217070b651f2b233e28163926ece73137ecd324e8f7297129370bfb25
