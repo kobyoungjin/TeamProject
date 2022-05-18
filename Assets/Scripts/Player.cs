@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    float speed = 5f;
-    Rigidbody rb;
-
+    public float speed = 5f;
     float jumpForce = 5f;
-    private bool isGrounded;
-
-    Camera cam;
     public float rotSpeed = 10f;
 
-    bool isMovable;
+    Rigidbody rb;
+    Camera cam;
+    Vector3 startPos;
+    Vector3 gravity;
+
+    private bool isGrounded;
+    private bool isMovable;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         isMovable = true;
+        startPos = transform.position;
+        gravity = new Vector3(0, -12f, 0);
+        Physics.gravity = gravity;
     }
 
     void Update()
@@ -27,6 +31,11 @@ public class Player : MonoBehaviour
         if (isMovable == false)
         {
             return;
+        }
+
+        if(transform.position.y < -10)
+        {
+            transform.position = startPos;
         }
 
         // 점프 확인
@@ -93,18 +102,35 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // 땅을 밟을 경우 
         if (collision.transform.CompareTag("Ground"))
         {
             isGrounded = true;
+            SetGravity(-12.0f);
+        }
+
+        // 느려지는 장판을 밟을 경우
+        if (collision.gameObject.name == "SlowPlatform")
+        {
+            SetPlayerSpeed(8.0f);
+            SetGravity(-12.0f);
+        }
+        // 빨라지는 장판을 밟을 경우
+        else if (collision.gameObject.name == "FasterPlatform")
+        {
+            SetPlayerSpeed(2.0f);
+            SetGravity(-20.0f);
         }
     }
 
+    // 점프시
     private void OnCollisionExit(Collision collision)
     {
         if (collision.transform.CompareTag("Ground"))
         {
             isGrounded = false;
         }
+        SetPlayerSpeed(5.0f);
     }
 
     public void CannotMove()
@@ -127,8 +153,28 @@ public class Player : MonoBehaviour
         isMovable = true;
     }
 
+    // 
     public void SetBoolGrounded(bool isGrounded)
     {
         this.isGrounded = isGrounded;
+    }
+
+    // Player 스피드 설정하는 함수
+    public void SetPlayerSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
+    // 플레이어 시작 위치 설정하는 함수
+    public void SetStartPos(Vector3 pos)
+    {
+        startPos = pos;
+    }
+
+    // 프로젝트 중력 설정하는 함수
+    public void SetGravity(float y)
+    {
+        Vector3 gravity = new Vector3(0, y, 0);
+        Physics.gravity = gravity;
     }
 }
