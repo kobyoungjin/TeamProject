@@ -6,6 +6,7 @@ public class FallingPlatform : MonoBehaviour
 {
     Rigidbody rb;
     Player player;
+    public float remainingTime = 0;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -16,7 +17,7 @@ public class FallingPlatform : MonoBehaviour
     {
         if(collision.gameObject.name.Equals("Player"))
         {
-            Invoke("Fall", 0.5f);
+            Invoke("Fall", remainingTime);
             gameObject.GetComponent<Renderer>().material.color = Color.red;
             Destroy(gameObject, 0.5f);
         }

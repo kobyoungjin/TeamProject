@@ -71,7 +71,7 @@ public class Maze : MonoBehaviour
             //Debug.Log(cubeList[j] + 1 + "번호:" + j);
             // 뽑은 숫자를 제외한 큐브들은 isTrigger가 꺼지게
             cubes[cubeList[j]].gameObject.GetComponent<BoxCollider>().isTrigger = false;
-            cubes[cubeList[j]].gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+            //cubes[cubeList[j]].gameObject.GetComponent<Renderer>().material.color = Color.yellow;
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Wind : MonoBehaviour
 {
-    float power = 2.3f;
+    float power = 2.0f;
     bool isActivated = false;
     Rigidbody playerRidbody;
     GameObject player;

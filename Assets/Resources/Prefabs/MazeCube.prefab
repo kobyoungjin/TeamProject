@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4162750334286998147}
   - component: {fileID: 4162750334286998146}
   - component: {fileID: 4162750334286998145}
+  - component: {fileID: 1387116674279473399}
   m_Layer: 0
   m_Name: MazeCube
   m_TagString: Ground
@@ -95,3 +96,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1387116674279473399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4162750334286998175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852980f090ca2e24a9853e3dc96fb681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
