@@ -64,7 +64,7 @@ public class Canon : MonoBehaviour
 
         while (true)
         {
-            angle = Random.Range(0, 0);
+            angle = Random.Range(-15, 15);
             if (angle % 5 == 0)
             {
                 //Debug.Log(angle);
