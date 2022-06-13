@@ -11,7 +11,7 @@ public class Canon : MonoBehaviour
     Camera cam;
 
 
-    float speed = 8.0f;
+    float speed = 10.0f;
     public float itemSpwanTime = 2.5f;
     bool isShoot = true;
 
@@ -64,7 +64,7 @@ public class Canon : MonoBehaviour
 
         while (true)
         {
-            angle = Random.Range(-30, 30);
+            angle = Random.Range(0, 0);
             if (angle % 5 == 0)
             {
                 //Debug.Log(angle);

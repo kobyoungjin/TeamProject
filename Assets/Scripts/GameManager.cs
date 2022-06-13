@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     {
         obj = Resources.Load<GameObject>("Prefabs/WoodLog");
         fruitIns = GameObject.Find("FruitIns");
-        LogSpawnPos = GameObject.Find("WoodLogSwan").transform;
+        LogSpawnPos = GameObject.Find("WoodLogSpawn").transform;
     }
 
     // Update is called once per frame

@@ -22,7 +22,7 @@ public class ObjTranslate : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Destroy(this.gameObject, 2.0f);
+            Destroy(this.gameObject, 0.5f);
         }
 
         if (collision.gameObject.name == "DestoryPlane")
