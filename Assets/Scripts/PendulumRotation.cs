@@ -13,7 +13,7 @@ public class PendulumRotation : MonoBehaviour
 	void Awake()
 	{
 		if (randomStart)
-			random = Random.Range(0f, 3f);
+			random = Random.Range(0f, 2f);
 	}
 
 	// Update is called once per frame
