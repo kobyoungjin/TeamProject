@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class SpeedPlatform : MonoBehaviour
 {
-    private Player player;
+    private CharacterControls player;
 
     private void Start()
     {
-        player = GameObject.FindObjectOfType<Player>().GetComponent<Player>();
+        player = GameObject.FindObjectOfType<CharacterControls>().GetComponent<CharacterControls>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.name == "SlowPlatform")
         {
-            player.SetPlayerSpeed(2.0f);
+            player.SetPlayerSpeed(7.0f);
         }
         else if(collision.gameObject.name == "FasterPlatform")
         {
@@ -25,7 +25,7 @@ public class SpeedPlatform : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        player.SetPlayerSpeed(5.0f);
+        player.SetPlayerSpeed(10.0f);
     }
 }
 
