@@ -1,46 +1,71 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    GameObject obj;
-    GameObject fruitIns;
-    Transform LogSpawnPos;
+    TextMeshProUGUI remainingItemUi;
 
-    public float woodLogSpwan = 7.0f;
-    bool isIns = true;
-    
-    void Start()
+    public int CountItem;
+    public float time;
+    private int currentTime = 0;
+
+    bool isOver = false;
+
+    private void Start()
     {
-        obj = Resources.Load<GameObject>("Prefabs/WoodLog");
-        fruitIns = GameObject.Find("FruitIns");
-        LogSpawnPos = GameObject.Find("WoodLogSpawn").transform;
+        remainingItemUi = GameObject.Find("RemainingItem(Text)").GetComponent<TextMeshProUGUI>();
+        CountItem = GameObject.Find("GoalItem").transform.childCount;
+
+        remainingItemUi.text = "남은 개수 : " + CountItem;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void DecreaseRemainingItem(int count)
     {
-        if (isIns)
+        CountItem -= count;
+        remainingItemUi.text = "남은 개수 : " + CountItem;
+    }
+
+    public void SetTime(int time)
+    {
+        this.time = time;
+    }
+    public void SetOver(bool isOver)
+    {
+        this.isOver = isOver;
+    }
+
+    public int GetCountItem()
+    {
+        return CountItem;
+    }
+
+    void CountTime()
+    {
+        if (isOver == false && time > 0)
         {
-            StartCoroutine(InstanceLog());
+            time -= Time.deltaTime;
+            currentTime = (int)time;
+            if (currentTime <= 0)
+            {
+                currentTime = 0;
+                StopTimer();
+            }
         }
     }
 
-    void ins()
+    // Ÿ�̸Ӹ� ���ߴ� �޼ҵ�
+    public void StopTimer()
     {
-        GameObject ins = Instantiate(obj, LogSpawnPos.position, obj.transform.rotation);
-        ins.transform.parent = fruitIns.transform;
-        ins.name = obj.name;
-
-        isIns = false;
+        isOver = true;
     }
 
-    IEnumerator InstanceLog()
+    // Ÿ�̸Ӹ� �����ϴ� �޼ҵ�
+    public void StartTimer()
     {
-        ins();
-
-        yield return new WaitForSeconds(woodLogSpwan);
-        isIns = true;
+        isOver = false;
+        time = 10;  // Ÿ�̸� ���� �ð��� n�ʷ� ���߱� ���� n+1���� ī��Ʈ �ٿ�
     }
 }

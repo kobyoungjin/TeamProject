@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
             transform.position = startPos;
         }
 
-        // Á¡ÇÁ È®ÀÎ
+        // ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
 
     void MoveTranslate()
     {
-        // WASD·Î ÀÌµ¿ÇÏ±â // KeyCode°ªÀ» ¹Ù²Ù¸é Æ¯Á¤ ¹öÆ°À¸·Î ÀÌµ¿ °¡´É!
+        // WASDï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ï±ï¿½ // KeyCodeï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ù¸ï¿½ Æ¯ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½!
         if (Input.GetKey(KeyCode.W))
         {
             this.transform.Translate(Vector3.forward * speed * Time.deltaTime);
@@ -70,52 +70,52 @@ public class Player : MonoBehaviour
     
     void MoveVelocity()
     {
-        // ÀÌµ¿ ÀÔ·Â
-        float h = Input.GetAxisRaw("Horizontal");   // ÁÂ¿ì ÀÌµ¿
-        float v = Input.GetAxisRaw("Vertical");       // ÀüÈÄ ÀÌµ¿
+        // ï¿½Ìµï¿½ ï¿½Ô·ï¿½
+        float h = Input.GetAxisRaw("Horizontal");   // ï¿½Â¿ï¿½ ï¿½Ìµï¿½
+        float v = Input.GetAxisRaw("Vertical");       // ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 
-        // ÀÌµ¿ ¹æÇâ
+        // ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
         Vector3 direction = new Vector3(h, 0, v);
         rb.velocity = direction * speed;
     }
 
     void Move()
     {
-        // Scene View¿¡¼­ ÇÃ·¹ÀÌ¾î°¡ ¹Ù¶óº¸´Â ¹æÇâ(Á¤¸é)À¸·Î ÇÃ·¹ÀÌ¾î ¸Ó¸®¿¡¼­ ·¹ÀÌÀú¸¦ ½î´Â °ÍÀ¸·Î º¸¿©ÁÜ
-        // ÁÖÀÇ) y°ªÀ» ¹Ý¿µÇÏ¸é Ä«¸Þ¶ó°¡ º¸´Â °¢µµ·Î ÀÎÇØ ¹Ù´ÚÀÌ³ª ÇÏ´ÃÀ» ¹Ù¶óº¸°Ô µÇ°í, ÀÌ´ë·Î ¾ÕÀ¸·Î °¡¸é ÇÏ´Ã·Î ½ÂÃµÇÏ°Å³ª ¶¥À¸·Î ÆÄ¹¯Çô µé¾î°¥ ¼ö ÀÖ¾î y°ªÀ» ¹Ýµå½Ã 0À¸·Î!
+        // Scene Viewï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Ù¶óº¸´ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ó¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        // ï¿½ï¿½ï¿½ï¿½) yï¿½ï¿½ï¿½ï¿½ ï¿½Ý¿ï¿½ï¿½Ï¸ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù´ï¿½ï¿½Ì³ï¿½ ï¿½Ï´ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸°ï¿½ ï¿½Ç°ï¿½, ï¿½Ì´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´Ã·ï¿½ ï¿½ï¿½Ãµï¿½Ï°Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¹ï¿½ï¿½ï¿½ ï¿½ï¿½î°¥ ï¿½ï¿½ ï¿½Ö¾ï¿½ yï¿½ï¿½ï¿½ï¿½ ï¿½Ýµï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½!
         Debug.DrawRay(this.transform.position + new Vector3(0, 1, 0), new Vector3(cam.transform.forward.x, 0f, cam.transform.forward.z).normalized, Color.blue);
 
-        // ÀÌµ¿ ÀÔ·Â
+        // ï¿½Ìµï¿½ ï¿½Ô·ï¿½
         Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        // Àü¹æ ÁÖ½Ã
-        // Á¤±ÔÈ­¸¦ ÅëÇØ 1¸¸Å­ÀÇ ±æÀÌ(¹æÇâ°ª) ±¸ÇÔ
-        Vector3 lookFoward = new Vector3(cam.transform.forward.x, 0f, cam.transform.forward.z).normalized; // Ä«¸Þ¶óÀÇ Àü¹æ È®ÀÎ
-        Vector3 lookRight = new Vector3(cam.transform.right.x, 0f, cam.transform.right.z).normalized;              // Ä«¸Þ¶óÀÇ ¿À¸¥ÂÊ È®ÀÎ
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ö½ï¿½
+        // ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½Å­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½â°ª) ï¿½ï¿½ï¿½ï¿½
+        Vector3 lookFoward = new Vector3(cam.transform.forward.x, 0f, cam.transform.forward.z).normalized; // Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
+        Vector3 lookRight = new Vector3(cam.transform.right.x, 0f, cam.transform.right.z).normalized;              // Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 
-        // Ä³¸¯ÅÍ°¡ ¿òÁ÷ÀÏ ¹æÇâ °è»ê
+        // Ä³ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         Vector3 moveDir = lookFoward * moveInput.y + lookRight * moveInput.x;
-        Quaternion rotateFoward = Quaternion.LookRotation(lookFoward);  // ÇÃ·¹¾î°¡ ¾ÕÀ» ¹Ù¶óº½
-        rb.rotation = Quaternion.Slerp(rb.rotation, rotateFoward, rotSpeed * Time.deltaTime);   // ºÎµå·´°Ô È¸Àü
+        Quaternion rotateFoward = Quaternion.LookRotation(lookFoward);  // ï¿½Ã·ï¿½ï¿½î°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶ï¿½
+        rb.rotation = Quaternion.Slerp(rb.rotation, rotateFoward, rotSpeed * Time.deltaTime);   // ï¿½Îµå·´ï¿½ï¿½ È¸ï¿½ï¿½
         this.transform.position += moveDir * Time.deltaTime * speed;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        // ¶¥À» ¹âÀ» °æ¿ì 
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 
         if (collision.transform.CompareTag("Ground"))
         {
             isGrounded = true;
             SetGravity(-12.0f);
         }
 
-        // ´À·ÁÁö´Â ÀåÆÇÀ» ¹âÀ» °æ¿ì
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         if (collision.gameObject.name == "SlowPlatform")
         {
             SetPlayerSpeed(8.0f);
             SetGravity(-12.0f);
         }
-        // »¡¶óÁö´Â ÀåÆÇÀ» ¹âÀ» °æ¿ì
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         else if (collision.gameObject.name == "FasterPlatform")
         {
             SetPlayerSpeed(2.0f);
@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Á¡ÇÁ½Ã
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private void OnCollisionExit(Collision collision)
     {
         if (collision.transform.CompareTag("Ground"))
@@ -138,11 +138,11 @@ public class Player : MonoBehaviour
         isMovable = false;
     }
 
-    // ÇÃ·¹ÀÌ¾î¸¦ ½ºÅÏ »óÅÂ·Î ¸¸µå´Â ÄÚ·çÆ¾
+    // ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½Æ¾
     public IEnumerator SturnState()
     {
         float sec = 0f;
-        // 3ÃÊµ¿¾È ½ºÅÏ »óÅÂ(¿òÁ÷ÀÏ ¼ö ¾øÀ½)
+        // 3ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
         isMovable = false;
         while (sec < 2f)
         {
@@ -159,19 +159,19 @@ public class Player : MonoBehaviour
         this.isGrounded = isGrounded;
     }
 
-    // Player ½ºÇÇµå ¼³Á¤ÇÏ´Â ÇÔ¼ö
+    // Player ï¿½ï¿½ï¿½Çµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     public void SetPlayerSpeed(float speed)
     {
         this.speed = speed;
     }
 
-    // ÇÃ·¹ÀÌ¾î ½ÃÀÛ À§Ä¡ ¼³Á¤ÇÏ´Â ÇÔ¼ö
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     public void SetStartPos(Vector3 pos)
     {
         startPos = pos;
     }
 
-    // ÇÁ·ÎÁ§Æ® Áß·Â ¼³Á¤ÇÏ´Â ÇÔ¼ö
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ß·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     public void SetGravity(float y)
     {
         Vector3 gravity = new Vector3(0, y, 0);

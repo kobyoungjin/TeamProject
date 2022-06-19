@@ -27,11 +27,14 @@ public class CharacterControls : MonoBehaviour {
 
 	public Vector3 checkPoint;
 	private bool slide = false;
+    bool isActivated = false;
+    float power = 2.0f;
 
-	void  Start (){
+    void  Start (){
 		// get the distance to ground
 		distToGround = GetComponent<Collider>().bounds.extents.y;
-	}
+        rb = GetComponent<Rigidbody>();
+    }
 	
 	bool IsGrounded (){
 		return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
@@ -47,7 +50,9 @@ public class CharacterControls : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
-		if (canMove)
+       
+
+        if (canMove)
 		{
 			if (moveDir.x != 0 || moveDir.z != 0)
 			{
@@ -120,7 +125,9 @@ public class CharacterControls : MonoBehaviour {
 		}
 		// We apply gravity manually for more tuning control
 		rb.AddForce(new Vector3(0, -gravity * GetComponent<Rigidbody>().mass, 0));
-	}
+
+     
+    }
 
 	private void Update()
 	{
@@ -143,7 +150,12 @@ public class CharacterControls : MonoBehaviour {
 				slide = false;
 			}
 		}
-	}
+
+        if (isActivated)
+        {
+            rb.AddForce(Vector3.right * power, ForceMode.Force); // õõ�� �ڷ� ����������
+        }
+    }
 
 	float CalculateJumpVerticalSpeed () {
 		// From the jump height and gravity we deduce the upwards speed 
@@ -164,6 +176,11 @@ public class CharacterControls : MonoBehaviour {
 	{
 		transform.position = checkPoint;
 	}
+
+    public void SetCheckPoint(Vector3 point)
+    {
+        checkPoint = point;
+    }
 
 	private IEnumerator Decrease(float value, float duration)
 	{
@@ -197,4 +214,44 @@ public class CharacterControls : MonoBehaviour {
 			canMove = true;
 		}
 	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "SlowPlatform")
+        {
+            SetPlayerSpeed(8.0f);
+            SetGravity(-12.0f);
+        }
+        // �������� ������ ���� ���
+        else if (collision.gameObject.name == "FasterPlatform")
+        {
+            SetPlayerSpeed(2.0f);
+            SetGravity(-20.0f);
+        }
+        if (collision.gameObject.CompareTag("Lava"))
+        {
+            LoadCheckPoint();
+        }
+    }
+
+    public void SetIsActive(bool isAct)
+    {
+        isActivated = isAct;
+    }
+
+    public bool GetIsActive()
+    {
+        return isActivated;
+    }
+
+    public void SetPlayerSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
+    public void SetGravity(float y)
+    {
+        Vector3 gravity = new Vector3(0, y, 0);
+        Physics.gravity = gravity;
+    }
 }

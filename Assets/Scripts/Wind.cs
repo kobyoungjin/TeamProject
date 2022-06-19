@@ -9,41 +9,42 @@ public class Wind : MonoBehaviour
     Rigidbody playerRidbody;
     GameObject player;
 
-    float current;  // ÇöÀç À§Ä¡
-    float speed = 1.5f;  // ¼±Ç³±â ¼Óµµ
+    float current;  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+    float speed = 1.5f;  // ï¿½ï¿½Ç³ï¿½ï¿½ ï¿½Óµï¿½
     int direction = 1;  
     float max = 6f;
     float min = 0f;
-
+    CharacterControls characterControls;
 
     private void Start()
     {
-        player = GameObject.Find("Player");
-        playerRidbody = player.GetComponent<Rigidbody>();
+       // player = GameObject.Find("Player");
+       //playerRidbody = player.GetComponent<Rigidbody>();
+        characterControls = GameObject.FindObjectOfType<CharacterControls>().GetComponent<CharacterControls>();
     }
 
     private void Update()
     {
-        if (isActivated)
-        {
-            playerRidbody.AddForce(Vector3.right * power, ForceMode.Force); // ÃµÃµÈ÷ µÚ·Î ³¯·Á¹ö¸®±â
-        }
+        //if (isActivated)
+        //{
+        //    playerRidbody.AddForce(Vector3.right * power, ForceMode.Force); // ÃµÃµï¿½ï¿½ ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        //}
 
         current += Time.deltaTime * direction * speed;
 
         if (current >= max)
         {
             current = max;
-            direction *= -1;    // ¹æÇâ ÀüÈ¯(À½¼ö->¾ç¼ö, ¾ç¼ö->À½¼ö)
+            direction *= -1;    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯(ï¿½ï¿½ï¿½ï¿½->ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½->ï¿½ï¿½ï¿½ï¿½)
         }
-        // ÃÖ¼Ò°ªº¸´Ù Á¶±ÝÀÌ¶óµµ ÀÛ¾ÆÁö¸é ÃÖ¼Ò°ªÀ¸·Î ÀçÁ¶Á¤
+        // ï¿½Ö¼Ò°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼Ò°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         else if (current <= min)
         {
             current = min;
-            direction *= -1;    // ¹æÇâ ÀüÈ¯(À½¼ö->¾ç¼ö, ¾ç¼ö->À½¼ö)
+            direction *= -1;    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯(ï¿½ï¿½ï¿½ï¿½->ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½->ï¿½ï¿½ï¿½ï¿½)
         }
         
-        transform.position = new Vector3(transform.position.x, current, transform.position.z);  // ÇÃ·§ÆûÀÇ ³ôÀÌ°ª º¯È­
+        transform.position = new Vector3(transform.position.x, current, transform.position.z);  // ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½ï¿½È­
     }
 
     private void FixedUpdate()
@@ -53,7 +54,7 @@ public class Wind : MonoBehaviour
 
     //private void OnTriggerEnter(Collider other)
     //{
-    //    // Æ®¸®°Å¿¡ µé¾î¿Â ¿ÀºêÁ§Æ®°¡ ÇÃ·¹ÀÌ¾î ÅÂ±×¸¦ °¡Áö°í ÀÖ°í 
+    //    // Æ®ï¿½ï¿½ï¿½Å¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Â±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½ 
     //    if (other.CompareTag("Player") && isActivated == false)
     //    {
     //        isActivated = true;
@@ -76,10 +77,10 @@ public class Wind : MonoBehaviour
    
     private void OnTriggerStay(Collider other)
     {
-        // Æ®¸®°Å¿¡ µé¾î¿Â ¿ÀºêÁ§Æ®°¡ ÇÃ·¹ÀÌ¾î ÅÂ±×¸¦ °¡Áö°í ÀÖ°í 
-        if (other.CompareTag("Player") && isActivated == false)
+        // Æ®ï¿½ï¿½ï¿½Å¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Â±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½ 
+        if (other.CompareTag("Player") && characterControls.GetIsActive() == false)
         {
-            isActivated = true;
+            characterControls.SetIsActive(true);
         }
     }
 
@@ -87,7 +88,7 @@ public class Wind : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            isActivated = false;
+            characterControls.SetIsActive(false);
         }
     }
 }

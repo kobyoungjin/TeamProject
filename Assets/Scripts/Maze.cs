@@ -12,36 +12,36 @@ public class Maze : MonoBehaviour
 
     void Start()
     {
-        mazeCubes = new GameObject[num * num];  // ÀÔ·ÂµÈ ¼ýÀÚÀÇ Á¦°ö¸¸Å­ ÇÒ´ç
+        mazeCubes = new GameObject[num * num];  // ï¿½Ô·Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ ï¿½Ò´ï¿½
         prefabs = Resources.Load<GameObject>("Prefabs/MazeCube");
         maze = GameObject.Find("Maze");
 
         for (int i = 0; i < num * num; i++)
         {
             GameObject cube = Instantiate(prefabs);
-            cube.name = prefabs.name + (i + 1);  // ÀÌ¸§Àº +1 ¸¸Å­ Áõ°¡
-            cube.transform.parent = this.transform;  // Maze¿ÀºêÁ§Æ®ÀÇ ÀÚ½ÄÀ» ¼³Á¤
-            mazeCubes[i] = cube;  // ¹è¿­¿¡ ³Ö¾î °ü¸®
+            cube.name = prefabs.name + (i + 1);  // ï¿½Ì¸ï¿½ï¿½ï¿½ +1 ï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½
+            cube.transform.parent = this.transform;  // Mazeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            mazeCubes[i] = cube;  // ï¿½è¿­ï¿½ï¿½ ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
 
-        MakeCell(mazeCubes);  // Å¥ºê µ¿Àû »ý¼º
-        MakeMaze(mazeCubes);  // ±æ¸¸µé±â
+        MakeCell(mazeCubes);  // Å¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        MakeMaze(mazeCubes);  // ï¿½æ¸¸ï¿½ï¿½ï¿½
     }
 
     void MakeCell(GameObject[] cubes)
     {
         for (int i = 0; i < num * num; i++)
-        {   // Å×ÀÌºí ¸ð¾çÀ¸·Î Å¥ºêµé »ý¼º
-            cubes[i].transform.position = maze.transform.position + new Vector3(4.0f * (i % num), 0, 4.0f * (i / num));
+        {   // ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¥ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            cubes[i].transform.position = maze.transform.position + new Vector3(2.3f * (i % num), 0, 2.3f * (i / num));
         }
     }
 
-    // ¾ÆÁ÷ Á¦´ë·Î ¹Ì±¸Çö
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½
     void MakeMaze(GameObject[] cubes)
     {
         int squareNum = num * num;
         List<int> cubeList = new List<int>();
-        int temp = Random.Range(0, num);  // Ã¹¹ø¤Š ¼ýÀÚ Á¤ÇÏ±â
+        int temp = Random.Range(0, num);  // Ã¹ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
         int random = 0;
         int i = 0;
 
@@ -55,21 +55,21 @@ public class Maze : MonoBehaviour
 
             if (cubeList.Contains(random))
             {
-                //Debug.Log("Áßº¹");
+                //Debug.Log("ï¿½ßºï¿½");
             }
             else
             {
                 cubeList.Add(random);
                 temp = random;
             }
-           
+
             i++;
         }
 
         for (int j = 0; j < cubeList.Count; j++)
         {
-            //Debug.Log(cubeList[j] + 1 + "¹øÈ£:" + j);
-            // »ÌÀº ¼ýÀÚ¸¦ Á¦¿ÜÇÑ Å¥ºêµéÀº isTrigger°¡ ²¨Áö°Ô
+            //Debug.Log(cubeList[j] + 1 + "ï¿½ï¿½È£:" + j);
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ isTriggerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             cubes[cubeList[j]].gameObject.GetComponent<BoxCollider>().isTrigger = false;
             //cubes[cubeList[j]].gameObject.GetComponent<Renderer>().material.color = Color.yellow;
         }
