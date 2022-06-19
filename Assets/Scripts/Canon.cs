@@ -11,7 +11,7 @@ public class Canon : MonoBehaviour
     Camera cam;
 
 
-    float speed = 10.0f;
+    float speed = 800.0f;
     public float itemSpwanTime = 2.5f;
     bool isShoot = true;
 
@@ -44,7 +44,7 @@ public class Canon : MonoBehaviour
         ins.transform.parent = fruitIns.transform;
         ins.name = fruit.name;
 
-        ins.GetComponent<Rigidbody>().AddRelativeForce(canonPos.transform.position * speed);
+        ins.GetComponent<Rigidbody>().AddRelativeForce(canonPos.transform.forward * speed);
 
 
         //if (fruit.name == "banana")

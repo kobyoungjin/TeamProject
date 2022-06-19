@@ -5,9 +5,10 @@ using UnityEngine;
 public class Treasure : MonoBehaviour
 {
     GameManager gameManager;
+    GameObject particle;
 
     float speed = 0.2f;
-    
+
     int direction = 1;  // 1이면 Up/Right, 0이면 Down/Left
     float max;
     float min;
@@ -19,6 +20,8 @@ public class Treasure : MonoBehaviour
         gameManager = GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>();
         max = transform.position.y + 0.5f;
         min = transform.position.y - 0.5f;
+
+        particle = GameObject.Find("Particle");
     }
 
     private void LateUpdate()
@@ -31,7 +34,8 @@ public class Treasure : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(this.gameObject);
-
+            int num = transform.GetSiblingIndex();
+            particle.transform.GetChild(num).GetComponent<ParticleSystem>().Play();
             gameManager.DecreaseRemainingItem(1);
         }
     }
