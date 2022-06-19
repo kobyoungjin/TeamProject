@@ -15,11 +15,11 @@ public class SpeedPlatform : MonoBehaviour
     {
         if(collision.gameObject.name == "SlowPlatform")
         {
-            player.SetPlayerSpeed(8.0f);
+            player.SetPlayerSpeed(2.0f);
         }
         else if(collision.gameObject.name == "FasterPlatform")
         {
-            player.SetPlayerSpeed(2.0f);
+            player.SetPlayerSpeed(18.0f);
         }
     }
 

@@ -24,7 +24,14 @@ public class GoldBox : MonoBehaviour
             openBox.SetActive(true);
 
             particleSystem.Play();
+            Invoke("SceneChange", 3f);
             //SceneManager.LoadScene("Ending");
         }
+    }
+
+    private void SceneChange()
+    {
+        SceneManager.LoadScene("Ending");
+
     }
 }
