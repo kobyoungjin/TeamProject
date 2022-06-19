@@ -44,14 +44,14 @@ public class Canon : MonoBehaviour
         ins.transform.parent = fruitIns.transform;
         ins.name = fruit.name;
 
-        ins.GetComponent<Rigidbody>().AddRelativeForce(rotater.transform.position * -speed);
+        ins.GetComponent<Rigidbody>().AddRelativeForce(canonPos.transform.position * speed);
 
 
-        if (fruit.name == "banana")
-            ins.transform.rotation = new Quaternion(0, rotater.transform.rotation.y, 0, 0);
+        //if (fruit.name == "banana")
+            //ins.transform.rotation = new Quaternion(0, rotater.transform.rotation.y, 0, 0);
 
-        int random = Random.Range(3, 8);
-        ins.GetComponent<Rigidbody>().AddForce(rotater.transform.forward * 10);
+        //int random = Random.Range(3, 8);
+        //ins.GetComponent<Rigidbody>().AddForce(rotater.transform.forward * 10);
         //ins.transform.Translate(rotater.transform.position * random * Time.deltaTime, Space.Self);
         
 
